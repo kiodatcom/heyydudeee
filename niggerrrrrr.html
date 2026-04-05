@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Flowers</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d855a8;
+  font-family: 'Courier New', monospace;
+  color: white;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* BUTTON */
+.click {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  cursor: pointer;
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  transition: 0.3s;
+  touch-action: manipulation;
+}
+.click:hover {
+  background: white;
+  color: black;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s ease;
+  pointer-events: none;
+  max-width: 90%;
+}
+.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+/* LETTER */
+.letter {
+  max-width: 400px;
+  line-height: 1.6;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.5s ease;
+  text-align: center;
+}
+.show .letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FLOWERS */
+.flowers {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* STEM */
+.stem {
+  position: relative;
+  width: 4px;
+  height: 120px;
+  background: #2ecc71;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.5s ease;
+}
+.show .stem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LEAVES */
+.leaf {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: #27ae60;
+  border-radius: 20px;
+}
+.leaf.left { left: -16px; top: 60px; transform: rotate(-30deg);}
+.leaf.right { right: -16px; top: 80px; transform: rotate(30deg);}
+
+/* FLOWER */
+.flower {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0;
+  transition: 1s ease;
+}
+.show .flower {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+/* PETALS */
+.petal {
+  position: absolute;
+  width: 18px;
+  height: 35px;
+  background: linear-gradient(to top, #fff, #ffd6e7);
+  border-radius: 50% 50% 0 0;
+  left: 50%;
+  top: 50%;
+  transform-origin: bottom center;
+}
+.petal:nth-child(1){ transform: translate(-50%, -100%) rotate(0deg);}
+.petal:nth-child(2){ transform: translate(-50%, -100%) rotate(60deg);}
+.petal:nth-child(3){ transform: translate(-50%, -100%) rotate(120deg);}
+.petal:nth-child(4){ transform: translate(-50%, -100%) rotate(180deg);}
+.petal:nth-child(5){ transform: translate(-50%, -100%) rotate(240deg);}
+.petal:nth-child(6){ transform: translate(-50%, -100%) rotate(300deg);}
+
+/* CENTER */
+.center {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: gold;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 480px) {
+  .letter { font-size: 14px; }
+  .click { font-size: 16px; padding: 10px 20px; top: 35%; }
+  .stem { height: 100px; }
+  .flower { width: 40px; height: 40px; top: -40px; }
+  .petal { width: 15px; height: 30px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="click" id="btn">Click me</button>
+
+<div class="container" id="main">
+
+  <div class="letter">
+    <p>
+      Hiii veaa,
+      To be honest, I don’t really understand why I feel this way. Ganito ba talaga kapag tinamaan ka na? Kahit hindi lahat tungkol sa’yo ay madaling basahin o intindihin, I still find myself wanting to pursue you...
+      At first, napansin ko yung pagiging avoidant mo, and hindi ko agad naintindihan kung bakit. It made me wonder a lot, and I won’t lie. it confused me. But as time went by, mas nakilala kita, and I started to understand where you’re coming from. I see that there are reasons behind it, things that shaped you to be that way.
+      Even if I don’t fully understand everything, I understand enough to respect that part of you. It didn’t push me away—instead, it made me want to be more patient and to understand you better.
+      The more I see you for who you really are, the more I find myself liking you. I like you, not just because of what I see, but even with the things I’m still learning about you. And if you’ll allow me, I’d really like the chance to pursue you sincerely.
+      No pressure, no expectations. I just want to be honest about what I feel.
+    </p>
+  </div>
+
+  <div class="flowers">
+    <div class="stem">
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="center"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const btn = document.getElementById("btn");
+
+function showLove() {
+  btn.style.opacity = "0";
+  btn.style.pointerEvents = "none";
+
+  setTimeout(() => {
+    btn.style.display = "none";
+  }, 300);
+
+  document.getElementById("main").classList.add("show");
+}
+
+// Mobile + desktop
+btn.addEventListener("click", showLove);
+btn.addEventListener("touchstart", showLove);
+</script>
+
+</body>
+</html>
